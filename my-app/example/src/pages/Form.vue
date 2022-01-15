@@ -7,7 +7,7 @@
       </div>
 
       <div id="form" class="col-lg-8">
-          <q-form @submit.prevent.stop="onSubmit()">
+          <q-form @submit.prevent.stop="onSubmit()" ref="myForm">
               <div class="row w-space q-gutter-md">
                 <div class="col">
                     <q-input 
@@ -108,7 +108,15 @@ export default defineComponent({
 
   methods:{
       onSubmit(){
-          console.log('submeteu');
+          this.$g.notify({
+              message: 'Registered successfully',
+              color: 'positive',
+              icon: 'check_circle_outline'
+          });
+      },
+
+      onReset(){
+          this.$refs.myForm.reset;
       }
   }
 })
