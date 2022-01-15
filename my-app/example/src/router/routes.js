@@ -8,6 +8,14 @@ const routes = [
     ]
   },
 
+  {
+    path: '/profile',
+    component: () => import('layouts/ProfileLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Profile.vue') }
+    ]
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
