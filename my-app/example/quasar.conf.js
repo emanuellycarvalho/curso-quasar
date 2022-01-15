@@ -67,10 +67,10 @@ module.exports = configure(function (ctx) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: ['js', 'vue'] }])
-      }
+      // chainWebpack (chain) {
+      //   chain.plugin('eslint-webpack-plugin')
+      //     .use(ESLintPlugin, [{ extensions: ['js', 'vue'] }])
+      // }
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -117,10 +117,10 @@ module.exports = configure(function (ctx) {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       // Tell browser when a file from the server should expire from cache (in ms)
 
-      chainWebpackWebserver (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: ['js'] }])
-      },
+      // chainWebpackWebserver (chain) {
+      //   chain.plugin('eslint-webpack-plugin')
+      //     .use(ESLintPlugin, [{ extensions: ['js'] }])
+      // },
 
       middlewares: [
         ctx.prod ? 'compression' : '',
@@ -212,16 +212,16 @@ module.exports = configure(function (ctx) {
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpackMain (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: ['js'] }])
-      },
+      // chainWebpackMain (chain) {
+      //   chain.plugin('eslint-webpack-plugin')
+      //     .use(ESLintPlugin, [{ extensions: ['js'] }])
+      // },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpackPreload (chain) {
-        chain.plugin('eslint-webpack-plugin')
-          .use(ESLintPlugin, [{ extensions: ['js'] }])
-      }
+      // chainWebpackPreload (chain) {
+      //   chain.plugin('eslint-webpack-plugin')
+      //     .use(ESLintPlugin, [{ extensions: ['js'] }])
+      // }
     }
   }
 })

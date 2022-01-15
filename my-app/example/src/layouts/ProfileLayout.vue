@@ -2,35 +2,34 @@
   <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated class="bg-negative">
+    <q-header elevated>
       <q-toolbar>
         <q-btn
           flat
           round
-          dense
           icon="menu"
           @click="toggleLeftDrawer"
         />
 
         <q-toolbar-title>
-          Header
+          Profile
         </q-toolbar-title>
+        
+        <q-tabs>
+          <q-route-tab
+            icon="home"
+            to="/"
+            replace
+            label="Home"
+          />
+          <q-route-tab
+            icon="assignment"
+            to="/profile/new"
+            replace
+            label="Register"
+          />
+        </q-tabs> 
       </q-toolbar>
-
-      <q-tabs>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
     </q-header>
 
     <!-- (Optional) The Footer -->
