@@ -104,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row w-space">
                 <div class="col bg-grey-2 q-pa-lg rounded-borders">
                     <p class="section-title">Please, tell us if you have any difficulties that fit in these areas:</p>
                     <p class="section-subtitle">Select as many as you need</p>
@@ -115,6 +115,17 @@
                     type="toggle"
                     inline
                     />
+                </div>
+            </div>
+
+            <div class="row w-space">
+                <div class="col">
+                    <q-checkbox
+                    v-model="form.newsletter"
+                    color="primary"
+                    label="Do you want to recieve our weekly newsletter?"
+                    true-value="yes"
+                    false-value="no"/>
                 </div>
             </div>
 
@@ -151,7 +162,8 @@ export default defineComponent({
                 cellphone: '',
                 gender: '',
                 type: '',
-                difficulties: []
+                difficulties: [],
+                newsletter: 'yes'
           },
 
           genderOptions: [
