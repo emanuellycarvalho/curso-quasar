@@ -98,7 +98,6 @@
                         name="type"
                         v-model="form.type"
                         :options="typeOptions"
-                        color="primary"
                         class="w-space-sm"
                         />
                     </div>
@@ -163,14 +162,15 @@ export default defineComponent({
           ],
 
           typeOptions: [
-              { label: 'Person', value: 'PF' },
-              { label: 'Company', value: 'PJ' },
+              { label: 'Person', value: 'PF', color: 'cyan' },
+              { label: 'Company', value: 'PJ', color: 'negative' },
           ],
 
           difficultiesOptions: [
               { label: 'Manual', value: 'manual' },
               { label: 'Visual', value: 'visual' },
               { label: 'Respiratory', value: 'respiratory' },
+              { label: 'Other(s)', value: 'other' },
           ],
       }
   },
