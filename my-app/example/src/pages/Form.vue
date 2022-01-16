@@ -92,28 +92,16 @@
                 </div>
 
                 <div class="col">
-                    <p class="session-title">You are representing a</p>
-                    <q-list>
-                        <q-item tag="label" v-ripple>
-                            <q-item-section avatar>
-                                <q-radio v-model="form.type" val="person" color="cyan" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Person</q-item-label>
-                                <q-item-label caption>You have a CPF (Fisical Person Register)</q-item-label>
-                            </q-item-section>
-                        </q-item>
-
-                        <q-item tag="label" v-ripple>
-                            <q-item-section avatar>
-                                <q-radio v-model="form.type" val="company" color="negative" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Company</q-item-label>
-                                <q-item-label caption>You have a CNPJ (National Juridic Person Register)</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                    </q-list>
+                    <div class="bg-grey-2 q-pa-sm rounded-borders">
+                        <p class="session-title">You are representing a</p>
+                        <q-option-group
+                        name="type"
+                        v-model="form.type"
+                        :options="typeOptions"
+                        color="primary"
+                        class="w-space-sm"
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -156,6 +144,10 @@ export default defineComponent({
               { option: 'Masculine', value: 'M'},
               { option: 'Non binary', value: 'NB'},
               { option: 'Other', value: 'Other'},
+          ],
+          typeOptions: [
+              { label: 'Person', value: 'PF' },
+              { label: 'Company', value: 'PJ' },
           ]
       }
   },
@@ -201,6 +193,10 @@ export default defineComponent({
 
     .w-space{
         margin-bottom: 15px;
+    }
+
+    .w-space-sm{
+        margin-bottom: 5px;
     }
 
     p.session-title{
