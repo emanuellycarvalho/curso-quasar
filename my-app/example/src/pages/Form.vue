@@ -77,6 +77,46 @@
                 </div>
             </div>
 
+            <div class="w-space q-gutter-md">
+                <q-select 
+                    v-model="form.gender" 
+                    label="Gender" 
+                    :options="genderOptions"
+                    emit-value
+                    map-options
+                    option-label="option" 
+                    outlined color="secondary"
+                    :rules="[
+                        val => val && val.length > 0 || 'Gender identity is required.'
+                    ]"
+                    />
+            </div>
+
+            <div class="w-space q-gutter-md">
+                <p class="session-title">You are representing a</p>
+                <q-list>
+                    <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                            <q-radio v-model="form.type" val="person" color="cyan" />
+                        </q-item-section>
+                        <q-item-section>
+                            <q-item-label>Person</q-item-label>
+                            <q-item-label caption>You have a CPF (Fisical Person Register)</q-item-label>
+                        </q-item-section>
+                    </q-item>
+
+                    <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                            <q-radio v-model="form.type" val="company" color="negative" />
+                        </q-item-section>
+                        <q-item-section>
+                            <q-item-label>Company</q-item-label>
+                            <q-item-label caption>You have a CNPJ (National Juridic Person Register)</q-item-label>
+                        </q-item-section>
+                    </q-item>
+                </q-list>
+            </div>
+
             <div class="col q-gutter-xs">
                 <q-btn
                 type="reset"
@@ -107,8 +147,16 @@ export default defineComponent({
                 name: '',
                 age: null,
                 email: '',
-                cellphone: ''
-          }
+                cellphone: '',
+                gender: '',
+                type: '',
+          },
+          genderOptions: [
+              { option: 'Feminine', value: 'F'},
+              { option: 'Masculine', value: 'M'},
+              { option: 'Non binary', value: 'NB'},
+              { option: 'Other', value: 'Other'},
+          ]
       }
   },
 
@@ -153,5 +201,10 @@ export default defineComponent({
 
     .w-space{
         margin-bottom: 15px;
+    }
+
+    p.session-title{
+        font-weight: 500;
+        font-size: 18px;
     }
 </style>
