@@ -87,11 +87,7 @@
                             val => val && val != null && val != '' || 'The age is required.',
                             val => val && val > 0 && val < 100 || 'Insert a valid age.',
                             val => val && val > 17 || 'Only 18+ can sign in.',
-                        ]">
-                            <template v-slot:prepend>
-                                <q-icon name="person"/>
-                            </template>
-                        </q-input>
+                        ]"/>
                     </div>
                 </div>
 
