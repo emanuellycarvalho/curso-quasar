@@ -93,7 +93,7 @@
 
                 <div class="col">
                     <div class="bg-grey-2 q-pa-sm rounded-borders">
-                        <p class="session-title">You are representing a</p>
+                        <p class="section-title">You are representing a</p>
                         <q-option-group
                         name="type"
                         v-model="form.type"
@@ -102,6 +102,20 @@
                         class="w-space-sm"
                         />
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col bg-grey-2 q-pa-lg rounded-borders">
+                    <p class="section-title">Please, tell us if you have any difficulties that fit in these areas:</p>
+                    <p class="section-subtitle">Select as many as you need</p>
+                    <q-option-group
+                    v-model="form.difficulties"
+                    :options="difficultiesOptions"
+                    color="cyan"
+                    type="toggle"
+                    inline
+                    />
                 </div>
             </div>
 
@@ -138,17 +152,26 @@ export default defineComponent({
                 cellphone: '',
                 gender: '',
                 type: '',
+                difficulties: []
           },
+
           genderOptions: [
               { option: 'Feminine', value: 'F'},
               { option: 'Masculine', value: 'M'},
               { option: 'Non binary', value: 'NB'},
               { option: 'Other', value: 'Other'},
           ],
+
           typeOptions: [
               { label: 'Person', value: 'PF' },
               { label: 'Company', value: 'PJ' },
-          ]
+          ],
+
+          difficultiesOptions: [
+              { label: 'Manual', value: 'manual' },
+              { label: 'Visual', value: 'visual' },
+              { label: 'Respiratory', value: 'respiratory' },
+          ],
       }
   },
 
@@ -199,8 +222,14 @@ export default defineComponent({
         margin-bottom: 5px;
     }
 
-    p.session-title{
+    p.section-title{
         font-weight: 500;
         font-size: 18px;
+    }
+
+    p.section-subtitle{
+        font-size: 13px;
+        color: grey;
+        margin-top: -10px;
     }
 </style>
