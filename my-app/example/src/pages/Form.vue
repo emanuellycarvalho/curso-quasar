@@ -7,7 +7,7 @@
       </div>
 
       <div id="form" class="col-lg-8">
-          <q-form @submit.prevent.stop="onSubmit()" ref="myForm">
+          <q-form @submit.prevent.stop="onSubmit()" @reset="onReset" ref="myForm">
               <div class="row w-space q-gutter-md">
                 <div class="col">
                     <q-input 
@@ -28,12 +28,12 @@
                     <q-input 
                     v-model="form.age" 
                     type="number" 
-                    label="Birth Date" 
+                    label="Age" 
                     outlined color="secondary"
                     :rules="[
-                        val => val && val != null && val != '' || 'The name is required.',
+                        val => val && val != null && val != '' || 'The age is required.',
                         val => val && val > 0 && val < 100 || 'Insert a valid age.',
-                        val => val && val < 18 || 'Only 18+ can sign in.',
+                        val => val && val > 17 || 'Only 18+ can sign in.',
                     ]">
                         <template v-slot:prepend>
                             <q-icon name="person"/>
@@ -60,15 +60,15 @@
 
                 <div class="col">
                     <q-input 
-                    v-model="form.celphone" 
+                    v-model="form.cellphone" 
                     type="tel" 
-                    label="Celphone" 
+                    label="Cellphone" 
                     outlined color="secondary"
                     mask="(##) #####-####"
                     unmasked-value
                     :rules="[
-                        val => val && val.length < 0 || 'The celphone is required.',
-                        val => val && val.length === 11 || 'Insert a valid celphone number.',
+                        val => val && val.length > 0 || 'The cellphone is required.',
+                        val => val && val.length === 11 || 'Insert a valid cellphone number.',
                     ]">
                         <template v-slot:prepend>
                             <q-icon name="telphone"/>
@@ -77,7 +77,13 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col q-gutter-xs">
+                <q-btn
+                type="reset"
+                label="Clear"
+                color="warning"
+                class="float-right"/>
+
                 <q-btn
                 type="submit"
                 label="Submit"
@@ -99,25 +105,38 @@ export default defineComponent({
       return {
           form:{
                 name: '',
-                age: '',
+                age: null,
                 email: '',
-                celphone: ''
+                cellphone: ''
           }
       }
   },
 
   methods:{
       onSubmit(){
-          this.$g.notify({
+          this.$q.notify({
               message: 'Registered successfully',
               color: 'positive',
               icon: 'check_circle_outline'
           });
+
+          this.onReset();
       },
 
-      onReset(){
-          this.$refs.myForm.reset;
+      async onReset(){
+          await this.resetForm();
+          this.$refs.myForm.resetValidation();
+      },
+
+      async resetForm(){
+          this.form = { 
+                name: '',
+                age: null,
+                email: '',
+                cellphone: ''             
+          }
       }
+  
   }
 })
 </script>
