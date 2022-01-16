@@ -23,23 +23,6 @@
                         </template>
                     </q-input>
                 </div>
-
-                <div class="col">
-                    <q-input 
-                    v-model="form.age" 
-                    type="number" 
-                    label="Age" 
-                    outlined color="secondary"
-                    :rules="[
-                        val => val && val != null && val != '' || 'The age is required.',
-                        val => val && val > 0 && val < 100 || 'Insert a valid age.',
-                        val => val && val > 17 || 'Only 18+ can sign in.',
-                    ]">
-                        <template v-slot:prepend>
-                            <q-icon name="person"/>
-                        </template>
-                    </q-input>
-                </div>
             </div>
 
             <div class="row w-space q-gutter-md">
@@ -77,44 +60,65 @@
                 </div>
             </div>
 
-            <div class="w-space q-gutter-md">
-                <q-select 
-                    v-model="form.gender" 
-                    label="Gender" 
-                    :options="genderOptions"
-                    emit-value
-                    map-options
-                    option-label="option" 
-                    outlined color="secondary"
-                    :rules="[
-                        val => val && val.length > 0 || 'Gender identity is required.'
-                    ]"
-                    />
-            </div>
+            <div class="row w-space q-gutter-md">
+                <div class="col">
+                    <div class="w-space">
+                        <q-select 
+                        v-model="form.gender" 
+                        label="Gender" 
+                        :options="genderOptions"
+                        emit-value
+                        map-options
+                        option-label="option" 
+                        outlined color="secondary"
+                        :rules="[
+                            val => val && val.length > 0 || 'Gender identity is required.'
+                        ]"
+                        />
+                    </div>
 
-            <div class="w-space q-gutter-md">
-                <p class="session-title">You are representing a</p>
-                <q-list>
-                    <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                            <q-radio v-model="form.type" val="person" color="cyan" />
-                        </q-item-section>
-                        <q-item-section>
-                            <q-item-label>Person</q-item-label>
-                            <q-item-label caption>You have a CPF (Fisical Person Register)</q-item-label>
-                        </q-item-section>
-                    </q-item>
+                    <div class="w-space">
+                        <q-input 
+                        v-model="form.age" 
+                        type="number" 
+                        label="Age" 
+                        outlined color="secondary"
+                        :rules="[
+                            val => val && val != null && val != '' || 'The age is required.',
+                            val => val && val > 0 && val < 100 || 'Insert a valid age.',
+                            val => val && val > 17 || 'Only 18+ can sign in.',
+                        ]">
+                            <template v-slot:prepend>
+                                <q-icon name="person"/>
+                            </template>
+                        </q-input>
+                    </div>
+                </div>
 
-                    <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                            <q-radio v-model="form.type" val="company" color="negative" />
-                        </q-item-section>
-                        <q-item-section>
-                            <q-item-label>Company</q-item-label>
-                            <q-item-label caption>You have a CNPJ (National Juridic Person Register)</q-item-label>
-                        </q-item-section>
-                    </q-item>
-                </q-list>
+                <div class="col">
+                    <p class="session-title">You are representing a</p>
+                    <q-list>
+                        <q-item tag="label" v-ripple>
+                            <q-item-section avatar>
+                                <q-radio v-model="form.type" val="person" color="cyan" />
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label>Person</q-item-label>
+                                <q-item-label caption>You have a CPF (Fisical Person Register)</q-item-label>
+                            </q-item-section>
+                        </q-item>
+
+                        <q-item tag="label" v-ripple>
+                            <q-item-section avatar>
+                                <q-radio v-model="form.type" val="company" color="negative" />
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label>Company</q-item-label>
+                                <q-item-label caption>You have a CNPJ (National Juridic Person Register)</q-item-label>
+                            </q-item-section>
+                        </q-item>
+                    </q-list>
+                </div>
             </div>
 
             <div class="col q-gutter-xs">
